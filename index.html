@@ -208,23 +208,36 @@ body {
           </div>
 
           <div class="inner cover">
+          	<img class="img" src="NF_icon_logo.png">
+            <p>Would you like to recieve a handcrafted sweet bread? Sign Up!</p>
 
-            <h3 class="cover-heading">About Us</h3>
-            <p>Hola nosotros somos X. Si quires un pan llena esto:</p>
-            <form>
-  <div class="form-group">
-    <label for="exampleInputEmail1">Email address</label>
-    <input type="email" class="form-control" name="email_address" id="email_address" placeholder="Email">
-  </div>
-  <div class="form-group">
-    <label for="exampleInputPassword1">Name</label>
-    <input type="name" class="form-control" id="name" placeholder="Name">
-  </div>
+<form action="//neighborhood.us12.list-manage.com/subscribe/post?u=00d4a14209a5ee79cde0b0425&amp;id=e1a57db917" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+    <div id="mc_embed_signup_scroll">
 
-  <button type="submit" class="btn btn-default"><i class="fa fa-gift"></i> Yes, I want it! <i class="fa fa-gift"></i></button>
+<div class="indicates-required"><span class="asterisk">*</span> indicates required</div>
+
+<div class="form-group">
+	<input type="email" placeholder="Email *" name="EMAIL" class="form-control required email" id="mce-EMAIL">
+</div>
+<div class="form-group">
+	<input type="text" placeholder="First Name *" name="FNAME" class="form-control" id="mce-FNAME">
+</div>
+<div class="form-group">
+	<input type="text" placeholder="Last Name *" name="LNAME" class="form-control" id="mce-LNAME">
+</div>
+<div class="form-group">
+	<input type="text" placeholder="Location *" name="LOCATION" class="form-control required" id="mce-LOCATION">
+</div>
+
+	<div id="mce-responses" class="clear">
+		<div class="response" id="mce-error-response" style="display:none"></div>
+		<div class="response" id="mce-success-response" style="display:none"></div>
+	</div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+    <div style="position: absolute; left: -5000px;"><input type="text" name="b_00d4a14209a5ee79cde0b0425_e1a57db917" tabindex="-1" value=""></div>
+    <div class="clear">
+    	<input type="submit" value="Yes, I want it!" name="subscribe" id="mc-embedded-subscribe" class="btn btn-default"></div>
+    </div>
 </form>
-
-
           </div>
 
           <div class="mastfoot">
@@ -245,54 +258,6 @@ body {
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
-
-	<script type="text/javascript">
-
-	var username= 'neighbourfood';	
-	var password = '75f20088183a874faec64f6493a2fb1f-us12';
-
-	$(document).ready( function () {
-	    // I only have one form on the page but you can be more specific if need be.
-	    var $form = $('form');
-
-	    if ( $form.length > 0 ) {
-	        $('form input[type="submit"]').bind('click', function ( event ) {
-	            if ( event ) event.preventDefault();
-	            // validate_input() is a validation function I wrote, you'll have to substitute this with your own.
-	            if ( validate_input($form) ) { register($form); }
-	        });
-	    }
-	});
-
-	function register($form) {
-	    $.ajax({
-	        type: 'POST',
-	        url: 'https://us12.api.mailchimp.com/3.0/lists/e1a57db917/members',
-	        data: {
-						"email_address": "juanmcardenas@gmail.com",
-						"status": "subscribed",
-						"merge_fields": {
-					    	"FNAME": "Juan",
-					    	"LNAME": "Martin"
-						}
-					},
-	        cache       : false,
-	        dataType    : 'json',
-	        contentType: "application/json; charset=utf-8",
-	        beforeSend: function (xhr) {
-			    xhr.setRequestHeader ("Authorization", "Basic " + btoa(username + ":" + password));
-			},
-	        error       : function(err) { alert("Could not connect to the registration server. Please try again later."); },
-	        success     : function(data) {
-	            if (data.result != "success") {
-	                // Something went wrong, do something to notify the user. maybe alert(data.msg);
-	            } else {
-	                // It worked, carry on...
-	            }
-	        }
-	    });
-	}
-
-	</script>
+	<script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script><script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';fnames[3]='LOCATION';ftypes[3]='text';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
   </body>
 </html>
