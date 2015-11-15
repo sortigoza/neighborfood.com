@@ -214,12 +214,13 @@ body {
             <form>
   <div class="form-group">
     <label for="exampleInputEmail1">Email address</label>
-    <input type="email" class="form-control" id="email" placeholder="Email">
+    <input type="email" class="form-control" name="email_address" id="email_address" placeholder="Email">
   </div>
   <div class="form-group">
     <label for="exampleInputPassword1">Name</label>
     <input type="name" class="form-control" id="name" placeholder="Name">
   </div>
+
   <button type="submit" class="btn btn-default"><i class="fa fa-gift"></i> Yes, I want it! <i class="fa fa-gift"></i></button>
 </form>
 
@@ -244,5 +245,54 @@ body {
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+
+	<script type="text/javascript">
+
+	var username= 'neighbourfood';	
+	var password = '75f20088183a874faec64f6493a2fb1f-us12';
+
+	$(document).ready( function () {
+	    // I only have one form on the page but you can be more specific if need be.
+	    var $form = $('form');
+
+	    if ( $form.length > 0 ) {
+	        $('form input[type="submit"]').bind('click', function ( event ) {
+	            if ( event ) event.preventDefault();
+	            // validate_input() is a validation function I wrote, you'll have to substitute this with your own.
+	            if ( validate_input($form) ) { register($form); }
+	        });
+	    }
+	});
+
+	function register($form) {
+	    $.ajax({
+	        type: 'POST',
+	        url: 'https://us12.api.mailchimp.com/3.0/lists/e1a57db917/members',
+	        data: {
+						"email_address": "juanmcardenas@gmail.com",
+						"status": "subscribed",
+						"merge_fields": {
+					    	"FNAME": "Juan",
+					    	"LNAME": "Martin"
+						}
+					},
+	        cache       : false,
+	        dataType    : 'json',
+	        contentType: "application/json; charset=utf-8",
+	        beforeSend: function (xhr) {
+			    xhr.setRequestHeader ("Authorization", "Basic " + btoa(username + ":" + password));
+			},
+	        error       : function(err) { alert("Could not connect to the registration server. Please try again later."); },
+	        success     : function(data) {
+	            if (data.result != "success") {
+	                // Something went wrong, do something to notify the user. maybe alert(data.msg);
+	            } else {
+	                // It worked, carry on...
+	            }
+	        }
+	    });
+	}
+
+	</script>
   </body>
 </html>
